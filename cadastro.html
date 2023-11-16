@@ -12,7 +12,6 @@
     let pessoas = [];
 
     function adicionarPessoa() {
-        // Obter os dados do formulário
         let nome = document.getElementById('nome').value;
         let salario = parseFloat(document.getElementById('salario').value);
         let idade = parseInt(document.getElementById('idade').value);
@@ -32,12 +31,10 @@
         document.getElementById('idade').value = '';
         document.getElementById('diploma').checked = false;
 
-        // Atualizar a exibição do cadastro
         exibirCadastro();
     }
 
     function exibirCadastro() {
-        // Limpar o conteúdo anterior
         document.getElementById('cadastro').innerHTML = '';
 
         for (let i = 0; i < pessoas.length; i++) {
