@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Pessoas</title>
+</head>
+<body>
+
+<script>
+    // Array para armazenar os registros das pessoas
+    let pessoas = [];
+
+    // Função para adicionar uma pessoa ao cadastro
+    function adicionarPessoa() {
+        // Obter os dados do formulário
+        let nome = document.getElementById('nome').value;
+        let salario = parseFloat(document.getElementById('salario').value);
+        let idade = parseInt(document.getElementById('idade').value);
+        let possuiDiploma = document.getElementById('diploma').checked;
+
+        // Criar um objeto com os dados da pessoa
+        let pessoa = {
+            nome: nome,
+            salario: salario,
+            idade: idade,
+            possuiDiploma: possuiDiploma
+        };
+
+        // Adicionar a pessoa ao array de pessoas
+        pessoas.push(pessoa);
+
+        // Limpar os campos do formulário
+        document.getElementById('nome').value = '';
+        document.getElementById('salario').value = '';
+        document.getElementById('idade').value = '';
+        document.getElementById('diploma').checked = false;
+
+        // Atualizar a exibição do cadastro
+        exibirCadastro();
+    }
+
+    // Função para exibir o cadastro de pessoas
+    function exibirCadastro() {
+        // Limpar o conteúdo anterior
+        document.getElementById('cadastro').innerHTML = '';
+
+        // Iterar sobre o array de pessoas e exibir os dados
+        for (let i = 0; i < pessoas.length; i++) {
+            let pessoa = pessoas[i];
+
+            let info = `Nome: ${pessoa.nome}, Salário: ${pessoa.salario}, Idade: ${pessoa.idade}, Possui Diploma: ${pessoa.possuiDiploma ? 'Sim' : 'Não'}`;
+
+            // Criar um elemento para exibir as informações
+            let div = document.createElement('div');
+            div.textContent = info;
+
+            // Adicionar o elemento à seção de cadastro
+            document.getElementById('cadastro').appendChild(div);
+        }
+    }
+</script>
+
+<!-- Formulário para inserir dados da pessoa -->
+<h2>Cadastro de Pessoas</h2>
+<label for="nome">Nome:</label>
+<input type="text" id="nome" required><br>
+
+<label for="salario">Salário:</label>
+<input type="number" id="salario" required><br>
+
+<label for="idade">Idade:</label>
+<input type="number" id="idade" required><br>
+
+<label for="diploma">Possui Diploma:</label>
+<input type="checkbox" id="diploma"><br>
+
+<button onclick="adicionarPessoa()">Adicionar Pessoa</button>
+
+<!-- Seção para exibir o cadastro de pessoas -->
+<h2>Cadastro Atual</h2>
+<div id="cadastro"></div>
+
+</body>
+</html>
