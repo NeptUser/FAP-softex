@@ -1,0 +1,84 @@
+Objeto Material: Carro
+Atributos:
+
+modelo - o modelo do carro.
+cor - a cor do carro.
+ano - o ano de fabricação do carro.
+Métodos:
+
+ligar - liga o carro.
+desligar - desliga o carro.
+pintar - altera a cor do carro.
+Exemplo em JavaScript:
+
+javascript
+Copy code
+var carro = {
+  modelo: "Civic",
+  cor: "Prata",
+  ano: 2022,
+
+  ligar: function () {
+    return "O carro está ligado.";
+  },
+
+  desligar: function () {
+    return "O carro está desligado.";
+  },
+
+  pintar: function (novaCor) {
+    this.cor = novaCor;
+    return "O carro foi pintado de " + novaCor + ".";
+  }
+};
+
+console.log("Modelo:", carro.modelo);
+console.log("Cor:", carro.cor);
+console.log("Ano:", carro.ano);
+console.log(carro.ligar());
+console.log(carro.pintar("Azul"));
+console.log(carro.desligar());
+Objeto Abstrato: Conta Bancária
+Atributos:
+
+numero - o número da conta bancária.
+saldo - o saldo disponível na conta.
+tipo - o tipo de conta (poupança, corrente, etc.).
+Métodos:
+
+consultarSaldo - retorna o saldo atual da conta.
+realizarDeposito - realiza um depósito na conta.
+realizarSaque - realiza um saque na conta.
+Exemplo em JavaScript:
+
+javascript
+Copy code
+var contaBancaria = {
+  numero: "123456",
+  saldo: 1000,
+  tipo: "Corrente",
+
+  consultarSaldo: function () {
+    return "Saldo atual: R$ " + this.saldo.toFixed(2);
+  },
+
+  realizarDeposito: function (valor) {
+    this.saldo += valor;
+    return "Depósito realizado. Novo saldo: R$ " + this.saldo.toFixed(2);
+  },
+
+  realizarSaque: function (valor) {
+    if (valor > this.saldo) {
+      return "Saldo insuficiente";
+    } else {
+      this.saldo -= valor;
+      return "Saque realizado. Novo saldo: R$ " + this.saldo.toFixed(2);
+    }
+  }
+};
+
+console.log("Número da conta:", contaBancaria.numero);
+console.log("Tipo de conta:", contaBancaria.tipo);
+console.log(contaBancaria.consultarSaldo());
+console.log(contaBancaria.realizarDeposito(500));
+console.log(contaBancaria.realizarSaque(200));
